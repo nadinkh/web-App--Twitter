@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+// import Main from './Main'
 
 const TweetForm = ({ addTweet }) => {
     const [tweet, setTweet] = useState()
@@ -26,15 +26,18 @@ const TweetForm = ({ addTweet }) => {
         </div>
     )
 
-
-
     return (
         <div className='form' onSubmit={handleSubmit}>
             <form className="form__container">
                 <textarea
                     className="form__container-input" placeholder=" What you have in mind..."
+                    value={tweet}
                     onChange={e => handleTweet(e.target.value)}></textarea>
-                <button type="submit">Tweet</button>
+                <button disabled={message}
+                    className="form__container-btn"
+                    type="submit">
+                    Tweet
+                    </button>
                 {message && alertText}
                 {/* if its more than 140 the text will show  */}
             </form>

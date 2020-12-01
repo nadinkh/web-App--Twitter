@@ -3,30 +3,64 @@ import NavBar from './NavBar'
 import TweetForm from './TweetForm'
 import TweetResults from './TweetResults'
 
-
 const Main = () => {
     const [results, setTweets] = useState([])
-    //local storage
-    useEffect(() => {
-        const results = JSON.parse(localStorage.getItem("results"));
-        if (results) {
-            setTweets(results);
-        }
-    }, []);
-    useEffect(() => {
-        localStorage.setItem("results", JSON.stringify(results));
-    }, [results]);
+    const URL = "https://micro-blogging-dot-full-stack-course-services.ew.r.appspot.com/tweet"
 
+    const dataRecieve = async (newTweets) => {
+        const response = await fetch(URL, {
+            method: "POST",
+            body: JSON.stringify(newTweets),
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        });
+        if (!response.ok) Error("error");
+        const data = await response.json();
+        console.log(data)
+    }
+    useEffect(() => {
+        const getTweets = async () => {
+            showLoader()
+            const response = await fetch(URL);
+            const data = await response.json();
+            setTweets(data.tweets);
+            if (data) {
+                hideLoader()
+            }
+        };
+        getTweets();
+    }, []);
 
     const addTweet = (text) => {
         const newTweets = {}
-        newTweets.text = text;
-        newTweets.date = new Date().toDateString()
+        newTweets.content = text;
+        newTweets.date = new Date().toISOString()
         newTweets.userName = 'Nadine'
-        setTweets([...results, newTweets])
-        console.log(results)
+        dataRecieve(newTweets)
+        showLoader();
+        setTimeout(() => {
+            setTweets([newTweets, ...results])
+            // console.log(results)
+            hideLoader();
+        }, 3000)
     }
+    // console.log(results)
+    const PageLoader = () => {
+        return (
+            <div className="loader">Loading...</div> //change CSS
+        )
+    }
+    const [loading, setLoading] = useState(false)
+    const usePageLoader = () => {
+        return [
+            loading ? PageLoader() : null,
+            () => setLoading(true),
+            () => setLoading(false)]
 
+    }
+    const [loader, showLoader, hideLoader] = usePageLoader()
     return (
         <div>
             <NavBar />
@@ -40,6 +74,7 @@ const Main = () => {
                 ))}
 
             </div>
+            {loader}
         </div>
     )
 }

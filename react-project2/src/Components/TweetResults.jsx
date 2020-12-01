@@ -8,11 +8,11 @@ const TweetResults = ({ tweet }) => {
             <div className="tweet__container">
                 <div className="tweet__container-top">
                     <h3 className="tweet__container-top--date">{tweet.userName}</h3>
-                    <span className="tweet__container-top--date">{tweet.date}</span>
+                    <span className="tweet__container-top--date">{new Date(tweet.date).toLocaleString()}</span>
                 </div>
                 <div className="tweet__container-bottom">
                     <p className="tweet__container-bottom--text">
-                        {tweet.text}
+                        {tweet.content}
                     </p>
                 </div>
             </div>
