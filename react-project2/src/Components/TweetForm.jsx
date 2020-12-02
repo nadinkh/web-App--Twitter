@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-// import Main from './Main'
 
-const TweetForm = ({ addTweet }) => {
+const TweetForm = ({ addTweet, loader }) => {
     const [tweet, setTweet] = useState()
     const [message, setMessage] = useState(false)
 
@@ -33,7 +32,7 @@ const TweetForm = ({ addTweet }) => {
                     className="form__container-input" placeholder=" What you have in mind..."
                     value={tweet}
                     onChange={e => handleTweet(e.target.value)}></textarea>
-                <button disabled={message}
+                <button disabled={message || loader}
                     className="form__container-btn"
                     type="submit">
                     Tweet

@@ -12,6 +12,27 @@
         height: 100px;
         background: #343A40;
         border-radius: 6px;
+        
+        .loader{
+          display: inline-block;
+          margin-bottom: auto;
+        }
        
     }
+    .tweet__container-top--name{
+      display: inline-block;
+      margin-left: 1rem;
+
+    }
+    .tweet__container-top--date{
+      margin-left: 40rem;
   }
+  .tweet__container-bottom--text{
+    margin-left: 1rem;
+    margin-top: 3rem;
+  }
+  
+  
+}
+ 
+

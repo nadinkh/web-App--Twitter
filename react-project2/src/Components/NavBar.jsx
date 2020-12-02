@@ -1,21 +1,17 @@
 import React from 'react'
 // import { Link } from 'react-router-dom'
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Link, NavLink, Route, Switch } from 'react-router-dom'
+import Profile from './Profile'
+import TweetForm from './TweetForm'
 
 function NavBar() {
     return (
-        <Router>
-            <div className='navbar'>
-                <h3 className="navbar__logo">Nadine's Blog</h3>
-                <div className="navbar__links">
-                    <Link to="/Home" className="navbar__link">Home</Link>
-                    <Link to="/profile" className="navbar__link">Profile</Link>
-                </div>
-                <div>
-
-                </div>
+        <div className='navbar'>
+            <div className="navbar__links">
+                <NavLink to="/" className="navbar__link">Home</NavLink>
+                <NavLink to="/Profile" className="navbar__link">Profile</NavLink>
             </div>
-        </Router>
+        </div>
     )
 }
 

@@ -25,6 +25,13 @@
       color: #FFFFFF;
       width: 68px;
 height: 34px;
+border:none;
+display: flex;
+justify-content: center;
+
+         @media only screen and(max-width: 68.75em) {
+            right: 15rem;
+         }
       }
    }
 }

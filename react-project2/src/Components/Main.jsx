@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import NavBar from './NavBar'
+import Profile from './Profile'
 import TweetForm from './TweetForm'
 import TweetResults from './TweetResults'
 
 const Main = () => {
     const [results, setTweets] = useState([])
+    const [userName, setProfile] = useState('')
     const URL = "https://micro-blogging-dot-full-stack-course-services.ew.r.appspot.com/tweet"
 
     const dataRecieve = async (newTweets) => {
@@ -37,14 +40,14 @@ const Main = () => {
         const newTweets = {}
         newTweets.content = text;
         newTweets.date = new Date().toISOString()
-        newTweets.userName = 'Nadine'
+        newTweets.userName = userName
         dataRecieve(newTweets)
         showLoader();
         setTimeout(() => {
             setTweets([newTweets, ...results])
             // console.log(results)
             hideLoader();
-        }, 3000)
+        }, 1000)
     }
     // console.log(results)
     const PageLoader = () => {
@@ -57,25 +60,36 @@ const Main = () => {
         return [
             loading ? PageLoader() : null,
             () => setLoading(true),
-            () => setLoading(false)]
+            () => setLoading(false)
+        ]
 
     }
     const [loader, showLoader, hideLoader] = usePageLoader()
     return (
-        <div>
-            <NavBar />
-            <TweetForm addTweet={addTweet} />
-            <div className="tweets">
-                {results.map((tweet, index) => (
-                    <TweetResults
-                        key={index}
-                        tweet={tweet}
-                    />
-                ))}
+        <Router>
+            <Switch>
 
-            </div>
-            {loader}
-        </div>
+                <Route exact path="/">
+
+                    <NavBar />
+                    <TweetForm addTweet={addTweet} loader={loader} />
+                    {loader}
+                    <div className="tweets">
+                        {results.map((tweet, index) => (
+                            <TweetResults
+                                key={index}
+                                tweet={tweet}
+                            />
+                        ))}
+
+                    </div>
+                </Route>
+                <Route path="/profile">
+                    <NavBar />
+                    <Profile userName={userName} setProfile={setProfile} />
+                </Route>
+            </Switch>
+        </Router>
     )
 }
 
