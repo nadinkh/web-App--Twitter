@@ -4,10 +4,12 @@ import NavBar from './NavBar'
 import Profile from './Profile'
 import TweetForm from './TweetForm'
 import TweetResults from './TweetResults'
-
+// import { TweetContextResults } from '../Contexts/TweetContextResults'
 const Main = () => {
+    // const [results, setTweets] = useState([])
     const [results, setTweets] = useState([])
     const [userName, setProfile] = useState('')
+    // const { results, setTweets } = useContext(TweetContextResults)
     const URL = "https://micro-blogging-dot-full-stack-course-services.ew.r.appspot.com/tweet"
 
     const dataRecieve = async (newTweets) => {
@@ -68,9 +70,8 @@ const Main = () => {
     return (
         <Router>
             <Switch>
-
+                {/* <TweetContextResults.Provider value={{ results, setTweets }}> */}
                 <Route exact path="/">
-
                     <NavBar />
                     <TweetForm addTweet={addTweet} loader={loader} />
                     {loader}
@@ -88,6 +89,7 @@ const Main = () => {
                     <NavBar />
                     <Profile userName={userName} setProfile={setProfile} />
                 </Route>
+                {/* </TweetContextResults.Provider> */}
             </Switch>
         </Router>
     )
