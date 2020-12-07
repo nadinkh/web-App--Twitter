@@ -1,5 +1,6 @@
 .navbar {
-    background-color: #f4f4f4;
+     background: #343A40;
+    
     display: flex;
     // height: 2rem;
     margin-bottom: 3rem;
@@ -17,8 +18,17 @@
         margin: 0 1rem;
         text-decoration: none;
         transition: all .3s ease;
-        &:hover {
-            color: red;
+        color: #ffffff;
+        &.active{
+            color: rgba(255, 255, 255, 0.5);
         }
-    }
+&:focus{
+    color: #ffffff;
+
+}
+        &:hover {
+            color: rgba(255, 255, 255, 0.5);        
+        }
+                   
+}
 }

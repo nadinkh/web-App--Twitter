@@ -1,7 +1,7 @@
 
       
   .tweets {
-
+font-size: 12px;
     margin: auto;
     margin-top: 3rem;
       .tweet {
@@ -13,23 +13,30 @@
         background: #343A40;
         border-radius: 6px;
         
-        .loader{
-          display: inline-block;
-          margin-bottom: auto;
-        }
+        // .loader{
+        //   display: flex;
+        //   margin-bottom: auto;
+
+        // }
        
     }
     .tweet__container-top--name{
       display: inline-block;
       margin-left: 1rem;
-
+    
+    }
+    img{
+      height: 6rem;
+      border-radius: 10rem;
+      margin-left: 1rem;
     }
     .tweet__container-top--date{
-      margin-left: 40rem;
-  }
+      margin-left: 37rem;
+       }
   .tweet__container-bottom--text{
-    margin-left: 1rem;
-    margin-top: 3rem;
+    margin-left: 7.5rem;
+    margin-top: -4rem;
+   
   }
   
   

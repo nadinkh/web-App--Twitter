@@ -12,8 +12,8 @@ const Profile = ({ userName, setProfile }) => {
     }
     return (
         <div>
-            <h1>Profile</h1>
-            <span>User Name</span>
+            <h1 >Profile</h1>
+            <span className="username">User Name</span>
             <div className='profile' onSubmit={handleProfile}>
                 <form className="form__profile">
                     <textarea
@@ -23,7 +23,7 @@ const Profile = ({ userName, setProfile }) => {
                     <button
                         className="form__profile-btn"
                         type="submit">
-                        Submit
+                        Save
                     </button>
                 </form>
             </div>

@@ -1,7 +1,7 @@
 @import './Navbar';
 @import './TweetForm';
 @import './TweetResults';
-
+@import './Profile';
 
 * {
     padding: 0;
@@ -16,6 +16,7 @@
 
 html {
     font-size: 62.5%; // 1rem == 10px
+    
 }
 
 body {
@@ -23,5 +24,7 @@ body {
     box-sizing: border-box;
     background-color: #15202B;
     color:  #CCCCCC;;
+    font-family: 'Roboto', sans-serif;
+
 }
 

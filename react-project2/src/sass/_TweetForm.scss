@@ -9,6 +9,9 @@
          border: 2px solid #CCCCCC;
          box-sizing: border-box;
          border-radius: 6px;
+         background-color: #15202B;
+      color: #FFFFFF;
+font-size: 16px;
       }
 
       &-btn{
@@ -19,16 +22,15 @@
       margin:auto;
       background: #007BFF;
       border-radius: 4px;
-      display: flex;
       align-items: center;
       text-align: center;
       color: #FFFFFF;
       width: 68px;
-height: 34px;
-border:none;
-display: flex;
-justify-content: center;
-
+      height: 34px;
+      border:none;
+      display: flex;
+      justify-content: center;
+cursor: pointer;
          @media only screen and(max-width: 68.75em) {
             right: 15rem;
          }
