@@ -2,6 +2,7 @@
 @import './TweetForm';
 @import './TweetResults';
 @import './Profile';
+@import'./_register.scss';
 
 * {
     padding: 0;
@@ -25,6 +26,7 @@ body {
     background-color: #15202B;
     color:  #CCCCCC;;
     font-family: 'Roboto', sans-serif;
+    padding: 0;
 
 }
 

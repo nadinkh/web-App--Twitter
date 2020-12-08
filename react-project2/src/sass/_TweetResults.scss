@@ -13,13 +13,10 @@ font-size: 12px;
         background: #343A40;
         border-radius: 6px;
         
-        // .loader{
-        //   display: flex;
-        //   margin-bottom: auto;
-
-        // }
+        
        
     }
+    
     .tweet__container-top--name{
       display: inline-block;
       margin-left: 1rem;
@@ -31,15 +28,27 @@ font-size: 12px;
       margin-left: 1rem;
     }
     .tweet__container-top--date{
+      display: flex;
       margin-left: 37rem;
        }
   .tweet__container-bottom--text{
-    margin-left: 7.5rem;
-    margin-top: -4rem;
+    margin-left: 8rem;
+    margin-top: -4.3rem;
+    display:flex;
+    font-size: medium;
+  font-weight: bold;
+  font-style: italic;
    
   }
   
   
+}
+.loader{
+  margin-top: 1%;
+  font-size: 2rem;
+  display: flex;
+  width: 100vw;
+ justify-content: center;
 }
  
 

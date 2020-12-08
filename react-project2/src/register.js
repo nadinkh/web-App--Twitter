@@ -8,7 +8,6 @@ const SignIn = () => {
     const [emailExist, setEmailExist] = useState('')
     const [passwordExist, setPasswordExist] = useState('')
     const history = useHistory()
-
     const handleEmailExist = event => {
         setEmailExist(event.target.value)
     }
@@ -23,17 +22,14 @@ const SignIn = () => {
         history.push('/')
     }
     return (
-        <div>
-            <div>
-                <input onChange={event => handleEmailExist(event)} type="email" placeholder="someone@email.com" />
+        <div className="login-container">
+            <div className="login-container-border">
+                <input className="login-email" onChange={event => handleEmailExist(event)} type="email" placeholder="youremail@email.com" />
+                <input className="login-password" onChange={event => handlePasswordExist(event)} type="password" placeholder="Enter your password" required />
+                <button className="login-button" onClick={login} type="button" >LogIn</button>
+                <button className="google-signin-button" onClick={signInWithGoogle}>Sign in with Google </button>
+                <Link className="signup-link" to="/signup" >Sign Up</Link>
             </div>
-            <div>
-                <input onChange={event => handlePasswordExist(event)} type="password" placeholder="Enter a password" required />
-            </div>
-            <div>
-                <button onClick={login} type="button" >LogIn</button>
-            </div>
-            <button onClick={signInWithGoogle}>Sign in with Google </button>
         </div>
 
     )
@@ -41,39 +37,37 @@ const SignIn = () => {
 const SignUpForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    // const [userName, setUserName] = useState('')
+    const [userName, setUserName] = useState('')
+    const history = useHistory()
 
     const handleEmail = event => {
         setEmail(event.target.value)
+    }
+    const handleUserName = event => {
+        setUserName(event.target.value)
     }
     const handlePassword = event => {
         setPassword(event.target.value)
     }
     const signup = (email, password) => {
         auth.createUserWithEmailAndPassword(email, password)
+            .then((results) => {
+                return results.user.updateProfile({
+                    displayName: userName
+                })
 
+            })
+        history.push('/')
     }
-
     return (
-        <div>
-            <div>
-                <h3>Create an Account!!</h3>
+        <div className="signup-container">
+            <div className="signup-border">
+                <h3>Create an Account</h3>
+                <input className="User-Name-signup" onChange={event => handleUserName(event)} type="text" placeholder="User Name" />
+                <input className="email" onChange={event => handleEmail(event)} type="email" placeholder="someone@email.com" />
+                <input className="password" onChange={event => handlePassword(event)} type="password" placeholder="Enter a password" required />
+                <button className="signup-button" onClick={() => signup(email, password)}>Sign Up</button>
             </div>
-            <div>
-                <input onChange={event => handleEmail(event)} type="email" placeholder="someone@email.com" />
-            </div>
-            <div>
-                <input onChange={event => handlePassword(event)} type="password" placeholder="Enter a password" required />
-            </div>
-            {/* <div>
-                <h4>Password Confirmation</h4>
-                <input type="password" placeholder="Confirm password" required />
-            </div> */}
-
-            <div>
-                <button onClick={signup(email, password)}>Sign Up</button>
-            </div>
-
         </div>
     )
 }
@@ -84,8 +78,6 @@ export const Register = () => {
             <Switch>
                 <Route exact path="/" >
                     <SignIn />
-                    <Link to="/signup" >Sign Up</Link>
-                    {/* <button onClick={chagePage}>Sign Up</button> */}
                 </Route>
             </Switch>
             <Switch>
@@ -96,7 +88,6 @@ export const Register = () => {
         </Router>
     )
 }
-
 
 export const SignOut = () => {
     return auth.currentUser && (

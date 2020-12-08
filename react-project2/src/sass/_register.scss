@@ -1,0 +1,103 @@
+
+.signup-container{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+}
+.signup-border{
+    border: #FFFFFF 2px solid;
+     display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    padding:4rem;
+    padding-top:12rem;
+    padding-bottom:12rem
+}
+h3{
+    display:flex;
+    font-size: medium;
+}
+.email,.password,.signup-button,.User-Name-signup{
+    display: flex;
+    margin:1rem 
+    
+}
+.email,.password,.User-Name-signup{
+    height: 4rem;
+    width:30rem;
+    border-radius: 4px;
+}
+.signup-button{
+    width: 7rem;
+}
+.login-container{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.login-container-border{
+    border: #FFFFFF 2px solid;
+    display: flex;
+   flex-flow: column;
+   align-items: center;
+   justify-content: center;
+   padding:4rem;
+   padding-top:12rem;
+   padding-bottom:12rem
+}
+.login-email,.login-password,.login-button,.google-signin-button,.signup-link{
+    display: flex;
+    margin:1rem 
+    
+}
+.login-email,.login-password{
+    height: 4rem;
+    width:30rem;
+    border-radius: 4px;
+}
+.google-signin-button,.login-button,.signup-button{
+   font-size: medium;  
+
+}
+.signup-link{
+    font-size:20px;
+    font-style: bold;
+}
+.login-button,.signup-button{
+    display: flex;
+      margin:auto;
+      background: #007BFF;
+      border-radius: 4px;
+      align-items: center;
+      text-align: center;
+      color: #FFFFFF;
+      width: 68px;
+      height: 34px;
+      border:none;
+      display: flex;
+      justify-content: center;
+      height: 4rem;
+    width:30rem;
+}
+
+.google-signin-button{
+    display: flex;
+      margin:auto;
+      background: #007BFF;
+      border-radius: 4px;
+      align-items: center;
+      text-align: center;
+      color: #FFFFFF;
+      height: 4rem;
+    width:30rem;
+
+      border:none;
+      justify-content: center;
+      margin-top:3rem;
+}

@@ -13,37 +13,19 @@ const Main = ({ SignOut, user }) => {
     const [results, setTweets] = useState([])
     const [userName, setProfile] = useState('')
 
-    // const { results, setTweets } = useContext(TweetContextResults)
-    // const URL = "https://micro-blogging-dot-full-stack-course-services.ew.r.appspot.com/tweet"
-
-    // const dataRecieve = async (newTweets) => {
-    //     const response = await fetch(URL, {
-    //         method: "POST",
-    //         body: JSON.stringify(newTweets),
-    //         headers: {
-    //             Accept: "application/json",
-    //             "Content-Type": "application/json",
-    //         },
-    //     });
-    //     if (!response.ok) Error("error");
-    //     const data = await response.json();
-    //     console.log(data)
-    // }
 
     useEffect(() => {
         let newArray = [];
         const getTweets = async () => {
-            await fb.firestore().collection('tweets').orderBy('date', 'desc').onSnapshot((singleTweet) => {
-                singleTweet.forEach((element) => {
-                    newArray.push(element.data())
-                    // console.log(element.data())
-                })
+            await fb.firestore().collection('tweets').orderBy('date', 'desc').get()
+                .then(((singleTweet) => {
+                    singleTweet.forEach((element) => {
+                        newArray.push(element.data())
+                        // console.log(element.data())
+                    })
 
-            })
-            // console.log(newArray)
+                }))
             showLoader()
-            // const response = await fetch(URL);
-            // const data = await response.json();
             setTweets(newArray);
             if (newArray) {
                 hideLoader()
@@ -58,13 +40,12 @@ const Main = ({ SignOut, user }) => {
         newTweets.date = new Date().toISOString()
         newTweets.userName = user.displayName
         newTweets.photoURL = user.photoURL
-        // dataRecieve(newTweets)
-        // showLoader();
-        // setTimeout(() => {
-        setTweets([newTweets, ...results])
-        //     // console.log(results)
-        //     hideLoader();
-        // }, 1000)
+        showLoader();
+        setTimeout(() => {
+            setTweets([newTweets, ...results])
+            hideLoader();
+        }, 1000)
+
         fb.firestore().collection("tweets").add(newTweets)
             .then(function (docRef) {
                 console.log("Document written with ID: ", docRef.id);
@@ -73,9 +54,7 @@ const Main = ({ SignOut, user }) => {
         //     console.error("Error adding document: ", error);
         // });
 
-
     }
-    // console.log(results)
     const PageLoader = () => {
         return (
             <div className="loader">Loading...</div> //change CSS
@@ -95,7 +74,6 @@ const Main = ({ SignOut, user }) => {
     return (
         <Router>
             <Switch>
-                {/* <TweetContextResults.Provider value={{ results, setTweets }}> */}
                 <Route exact path="/">
                     <NavBar />
                     <SignOut SignOut={SignOut} />
@@ -115,7 +93,6 @@ const Main = ({ SignOut, user }) => {
                     <NavBar />
                     <Profile userName={userName} setProfile={setProfile} />
                 </Route>
-                {/* </TweetContextResults.Provider> */}
             </Switch>
         </Router>
     )
