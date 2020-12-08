@@ -1,34 +1,106 @@
-.form__profile-input{
-    display:flex;
-    position: absolute;
-width: 400px;
-height: 30px;
-border: 2px solid #CCCCCC;
-box-sizing: border-box;
-border-radius: 6px;
-margin: 1rem;
-background-color: #15202B;
-}
-.form__profile-btn{
-    position: absolute;
-    width: 41px;
-    height: 25px;
-    left: 380px;
-    top: 227px;
-    border:none;
+
+.profile-container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    
+  }
+  .user-name-input{
+    height: 4rem;
+    width:20rem;
+    border-radius: 4px;
+    margin-right: -2rem;;
+  }
+  .profile-btn{
+    display: flex;
+    margin:auto;
     background: #007BFF;
     border-radius: 4px;
-    color: #ffffff;
-}
-.form__profile-btn{
-    cursor: pointer;
-}
-h1,.username{
-    margin :1rem
-}
-.username{
-    font-size: 18px;
-}
-h1{
-    font-size: 36px;
-}
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    width: 68px;
+    height: 34px;
+    border:none;
+    display: flex;
+    justify-content: center;
+    margin-top:3rem ;
+  }
+  .border-profile{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 40rem;
+    height: 50rem;
+    border: 2px solid #CCCCCC;
+    border-radius: 6px;
+    padding: 1rem 2rem;
+  }
+  h1 {
+    color: white;
+    font-size: x-large;
+  }
+  .container-input-profile {
+    width: 20rem;
+    display: flex;
+    flex-flow: column;
+  }
+  label{
+    font-size: medium; 
+  }
+  h4{
+    margin-top:5rem;
+    width: 100%;
+    text-align: start;
+    font-weight: 300;
+    font-size: medium;
+  }
+  div.upload {
+    display: flex;
+      margin:auto;
+      background: #007BFF;
+      border-radius: 4px;
+      align-items: center;
+      text-align: center;
+      color: #FFFFFF;
+      width: 68px;
+      height: 34px;
+      border:none;
+      display: flex;
+      justify-content: center;
+  }
+  div.upload input {  
+    display: block !important; 
+    opacity: 0 !important;  
+    overflow: hidden !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  .upload-text{
+      
+    width: 100%;
+    text-align: center;
+    margin-right: -240px;
+  }
+  .submit-file   {
+    width: 70px;
+    height: 25px;
+    color: #FFFFFF;
+    background: #007BFF;
+    font-size: 1rem;
+    border: none;  
+    border-radius: 2px;
+    margin: 3% 0;
+    text-align: center;
+    font-size: 1rem;
+    margin-left: 1rem;
+  }
+  .flex-file{
+      margin-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    // width: 100%;
+  }

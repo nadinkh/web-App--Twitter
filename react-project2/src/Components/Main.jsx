@@ -9,21 +9,16 @@ import { firestore } from '../Firebase'
 import 'firebase/firestore'
 import 'firebase/auth';
 const Main = ({ SignOut, user }) => {
-    // const [results, setTweets] = useState([])
     const [results, setTweets] = useState([])
     const [userName, setProfile] = useState('')
-
-
     useEffect(() => {
         let newArray = [];
         const getTweets = async () => {
-            await fb.firestore().collection('tweets').orderBy('date', 'desc').get()
+            await fb.firestore().collection('tweets').orderBy('date', 'desc').limit(10).get()
                 .then(((singleTweet) => {
                     singleTweet.forEach((element) => {
                         newArray.push(element.data())
-                        // console.log(element.data())
                     })
-
                 }))
             showLoader()
             setTweets(newArray);
@@ -50,14 +45,12 @@ const Main = ({ SignOut, user }) => {
             .then(function (docRef) {
                 console.log("Document written with ID: ", docRef.id);
             })
-        // .catch(function (error) {
-        //     console.error("Error adding document: ", error);
-        // });
 
     }
+
     const PageLoader = () => {
         return (
-            <div className="loader">Loading...</div> //change CSS
+            <div className="loader">Loading...</div>
         )
     }
     const [loading, setLoading] = useState(false)
@@ -91,7 +84,7 @@ const Main = ({ SignOut, user }) => {
                 </Route>
                 <Route path="/profile">
                     <NavBar />
-                    <Profile userName={userName} setProfile={setProfile} />
+                    <Profile user={user} userName={userName} setProfile={setProfile} />
                 </Route>
             </Switch>
         </Router>

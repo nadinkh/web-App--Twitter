@@ -10,7 +10,7 @@ const TweetResults = ({ tweet }) => {
 
                     <h3 className="tweet__container-top--name">{tweet.userName}</h3>
                     <span className="tweet__container-top--date">{new Date(tweet.date).toLocaleString()}</span>
-                    <img src={tweet.photoURL} />
+                    <img src={tweet.photoURL || "../defualtProfile.png"} />
                 </div>
                 <div className="tweet__container-bottom">
                     <p className="tweet__container-bottom--text">
